@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "campaignActivity",
+            "otherEntityName": "campaignActivity",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "agent"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "shortDescription",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "fullDescription",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 1000
+        },
+        {
+            "fieldName": "legalPersonality",
+            "fieldType": "LEGAL_PERSONALITY",
+            "fieldValues": "COMPANY,PERSON"
+        },
+        {
+            "fieldName": "agentStatus",
+            "fieldType": "AGENT_STATUS",
+            "fieldValues": "ACTIVE,INACTIVE,SUSPENDED,DELETED,VACATION"
+        },
+        {
+            "fieldName": "preferredRate",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20171219213302",
+    "entityTableName": "agent",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span jhiTranslate="whisperApp.principleSubscription.home.title">Principle Subscriptions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-principle-subscription" [routerLink]="['/', { outlets: { popup: ['principle-subscription-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="whisperApp.principleSubscription.home.createLabel">
+            Create new Principle Subscription
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="principleSubscriptions">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="whisperApp.principleSubscription.paymentToken">Payment Token</span></th>
+            <th><span jhiTranslate="whisperApp.principleSubscription.startDate">Start Date</span></th>
+            <th><span jhiTranslate="whisperApp.principleSubscription.endDate">End Date</span></th>
+            <th><span jhiTranslate="whisperApp.principleSubscription.paymentStatus">Payment Status</span></th>
+            <th><span jhiTranslate="whisperApp.principleSubscription.subscriptionDetails">Subscription Details</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let principleSubscription of principleSubscriptions ;trackBy: trackId">
+                <td><a [routerLink]="['../principle-subscription', principleSubscription.id ]">{{principleSubscription.id}}</a></td>
+                <td>{{principleSubscription.paymentToken}}</td>
+                <td>{{principleSubscription.startDate | date:'mediumDate'}}</td>
+                <td>{{principleSubscription.endDate | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'whisperApp.PAYMENT_STATUS.' + principleSubscription.paymentStatus}}">{{principleSubscription.paymentStatus}}</td>
+                <td>
+                    <div *ngIf="principleSubscription.subscriptionDetails">
+                        <a [routerLink]="['../subscription-details', principleSubscription.subscriptionDetails?.id ]" >{{principleSubscription.subscriptionDetails?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../principle-subscription', principleSubscription.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'principle-subscription/'+ principleSubscription.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'principle-subscription/'+ principleSubscription.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+{
+    "whisperApp": {
+        "AGENT_STATUS" : {
+            "null": "",
+            "ACTIVE": "ACTIVE",
+            "INACTIVE": "INACTIVE",
+            "SUSPENDED": "SUSPENDED",
+            "DELETED": "DELETED",
+            "VACATION": "VACATION"
+        }
+    }
+}

@@ -1,0 +1,63 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPrincipleLabel" jhiTranslate="whisperApp.principle.home.createOrEditLabel">Create or edit a Principle</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!principle.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="principle.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.principle.nip" for="field_nip">Nip</label>
+            <input type="text" class="form-control" name="nip" id="field_nip"
+                [(ngModel)]="principle.nip" maxlength="10" />
+            <div [hidden]="!(editForm.controls.nip?.dirty && editForm.controls.nip?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nip?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                   This field cannot be longer than 10 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.principle.companyName" for="field_companyName">Company Name</label>
+            <input type="text" class="form-control" name="companyName" id="field_companyName"
+                [(ngModel)]="principle.companyName" maxlength="100" />
+            <div [hidden]="!(editForm.controls.companyName?.dirty && editForm.controls.companyName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.companyName?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.principle.principleStatus" for="field_principleStatus">Principle Status</label>
+            <select class="form-control" name="principleStatus" [(ngModel)]="principle.principleStatus" id="field_principleStatus" >
+                <option value="ACTIVE">{{'whisperApp.PRINCIPLE_STATUS.ACTIVE' | translate}}</option>
+                <option value="INACTIVE">{{'whisperApp.PRINCIPLE_STATUS.INACTIVE' | translate}}</option>
+                <option value="SUSPENDED">{{'whisperApp.PRINCIPLE_STATUS.SUSPENDED' | translate}}</option>
+                <option value="DELETED">{{'whisperApp.PRINCIPLE_STATUS.DELETED' | translate}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.principle.principleSubscription" for="field_principleSubscription">Principle Subscription</label>
+            <select class="form-control" id="field_principleSubscription" name="principleSubscription" [(ngModel)]="principle.principleSubscription">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="principleSubscriptionOption.id === principle.principleSubscription?.id ? principle.principleSubscription : principleSubscriptionOption" *ngFor="let principleSubscriptionOption of principlesubscriptions; trackBy: trackPrincipleSubscriptionById">{{principleSubscriptionOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+{
+    "whisperApp": {
+        "sampleOfAgentActivity" : {
+            "home": {
+                "title": "Sample Of Agent Activities",
+                "createLabel": "Dodaj Sample Of Agent Activity",
+                "createOrEditLabel": "Dodaj lub edytuj: Sample Of Agent Activity"
+            },
+            "created": "Utworzono nowy Sample Of Agent Activity z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Sample Of Agent Activity z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Sample Of Agent Activity z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Sample Of Agent Activity {{ id }}?"
+            },
+            "detail": {
+                "title": "Sample Of Agent Activity"
+            },
+            "activityName": "Activity Name"
+        }
+    }
+}

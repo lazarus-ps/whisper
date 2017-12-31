@@ -1,0 +1,10 @@
+{
+    "whisperApp": {
+        "CAMPAING_ACTIVITY_STATUS" : {
+            "null": "",
+            "NONE": "NONE",
+            "POSITIVE": "POSITIVE",
+            "NEGATIVE": "NEGATIVE"
+        }
+    }
+}

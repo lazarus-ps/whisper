@@ -1,0 +1,37 @@
+
+<div *ngIf="subscriptionDetails">
+    <h2><span jhiTranslate="whisperApp.subscriptionDetails.detail.title">Subscription Details</span> {{subscriptionDetails.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="whisperApp.subscriptionDetails.name">Name</span></dt>
+        <dd>
+            <span>{{subscriptionDetails.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.subscriptionDetails.desctiprion">Desctiprion</span></dt>
+        <dd>
+            <span>{{subscriptionDetails.desctiprion}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.subscriptionDetails.numberOfCampaigns">Number Of Campaigns</span></dt>
+        <dd>
+            <span>{{subscriptionDetails.numberOfCampaigns}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.subscriptionDetails.price">Price</span></dt>
+        <dd>
+            <span>{{subscriptionDetails.price}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'subscription-details/'+ subscriptionDetails.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

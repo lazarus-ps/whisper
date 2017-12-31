@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213258_added_entity_UserData.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213259_added_entity_Principle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213300_added_entity_PrincipleSubscription.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213301_added_entity_SubscriptionDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213302_added_entity_Agent.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213303_added_entity_SampleOfAgentActivity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213304_added_entity_AgentRate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213305_added_entity_Address.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213306_added_entity_Campaign.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213307_added_entity_CampaignActivity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213308_added_entity_SampleOfCampaignActivity.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20171219213258_added_entity_constraints_UserData.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213259_added_entity_constraints_Principle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213300_added_entity_constraints_PrincipleSubscription.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213304_added_entity_constraints_AgentRate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213305_added_entity_constraints_Address.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213306_added_entity_constraints_Campaign.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171219213307_added_entity_constraints_CampaignActivity.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

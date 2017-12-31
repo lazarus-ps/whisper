@@ -1,0 +1,24 @@
+{
+    "whisperApp": {
+        "subscriptionDetails" : {
+            "home": {
+                "title": "Subscription Details",
+                "createLabel": "Dodaj Subscription Details",
+                "createOrEditLabel": "Dodaj lub edytuj: Subscription Details"
+            },
+            "created": "Utworzono nowy Subscription Details z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Subscription Details z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Subscription Details z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Subscription Details {{ id }}?"
+            },
+            "detail": {
+                "title": "Subscription Details"
+            },
+            "name": "Name",
+            "desctiprion": "Desctiprion",
+            "numberOfCampaigns": "Number Of Campaigns",
+            "price": "Price"
+        }
+    }
+}

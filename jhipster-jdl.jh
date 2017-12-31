@@ -1,0 +1,160 @@
+entity UserData {
+	birthDate LocalDate required,
+	gender GENDER,
+	pesel String maxlength(11),
+    phoneNumber String maxlength(12) required
+}
+
+entity Principle {
+	nip String maxlength(10),
+    companyName String maxlength(100),
+    principleStatus PRINCIPLE_STATUS
+}
+
+entity PrincipleSubscription {
+	paymentToken String required,
+	startDate LocalDate required,
+    endDate LocalDate required,
+    paymentStatus PAYMENT_STATUS required
+}
+
+entity SubscriptionDetails {
+	name String maxlength(100) required,
+    desctiprion String maxlength(300) required,
+    numberOfCampaigns Integer required,
+    price Double required
+}
+
+entity Agent {
+	shortDescription String maxlength(100) required,
+    fullDescription String maxlength(1000) required,
+    legalPersonality LEGAL_PERSONALITY,
+    agentStatus AGENT_STATUS,
+    preferredRate BigDecimal required
+}
+
+entity SampleOfAgentActivity {
+	activityName String maxlength(100) required
+}
+
+entity AgentRate {
+	rate Integer required,
+    comment String required
+}
+
+entity Address {
+	placeOrCity String maxlength(30) required,
+    street String maxlength(30),
+    province String maxlength(30) required,
+    postalCode String maxlength(6) required
+}
+
+entity Campaign {
+	name String maxlength(100) required,
+    description String maxlength(1000) required,
+    startDate LocalDate required,
+    endDate LocalDate required,
+    campaignActivity String required,
+    listOfPostsForActivity Integer required,
+    executionStatus Integer required,
+    budget Double required,
+    campaignStatus CAMPAING_STATUS required,
+    parentCampaign Integer required
+}
+
+entity CampaignActivity {
+	name String required,
+    url String required,
+    creationDate LocalDate required,
+    campaignActivity CAMPAING_ACTIVITY_STATUS required,
+    text String maxlength(300) required,
+    linkToActivity String maxlength(500) required,
+    nickINActivity String maxlength(100) required,
+    numberOfLinksToCampaignPages Integer required,
+    activityType ACTIVITY_TYPE required
+}
+
+entity SampleOfCampaignActivity {
+	activityName String maxlength(100) required,
+    listOfPosts Integer
+}
+
+enum ACTIVITY_TYPE {
+	PR, NEUTRAL, COMMENT, ARTICLE
+}
+
+enum CAMPAING_ACTIVITY_STATUS {
+	NONE, POSITIVE, NEGATIVE
+}
+
+enum CAMPAING_STATUS {
+	ACTIVE, INACTIVE, SUSPENDED, DELETED
+}
+
+enum PAYMENT_STATUS {
+	DONE, NOTDONE
+}
+
+enum PRINCIPLE_STATUS {
+    ACTIVE, INACTIVE, SUSPENDED, DELETED
+}
+
+enum AGENT_STATUS {
+    ACTIVE, INACTIVE, SUSPENDED, DELETED, VACATION
+}
+
+enum GENDER {
+	MALE, FEMALE
+}
+
+enum LEGAL_PERSONALITY {
+	COMPANY, PERSON
+}
+
+relationship OneToOne {
+	UserData{user(email)} to User
+}
+
+relationship OneToOne {
+	UserData{principle} to Principle
+}
+
+relationship OneToOne {
+	Principle{principleSubscription} to PrincipleSubscription
+}
+
+relationship OneToOne {
+	PrincipleSubscription{subscriptionDetails} to SubscriptionDetails
+}
+
+relationship OneToOne {
+	UserData{agent} to Agent
+}
+
+relationship ManyToOne {
+	Address{userData required} to UserData
+}
+
+relationship ManyToOne {
+	AgentRate{agent} to Agent
+}
+
+relationship ManyToOne {
+	CampaignActivity{campaign required} to Campaign
+}
+
+relationship OneToOne {
+	CampaignActivity{agentRate} to AgentRate
+}
+
+relationship ManyToOne {
+	Campaign{principleSubscription} to PrincipleSubscription
+}
+
+relationship ManyToMany {
+	CampaignActivity{agent} to Agent{campaignActivity}
+}
+
+paginate Campaign with pagination
+
+paginate Agent with pagination

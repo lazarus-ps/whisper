@@ -1,0 +1,88 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPrincipleSubscriptionLabel" jhiTranslate="whisperApp.principleSubscription.home.createOrEditLabel">Create or edit a Principle Subscription</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!principleSubscription.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="principleSubscription.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.principleSubscription.paymentToken" for="field_paymentToken">Payment Token</label>
+            <input type="text" class="form-control" name="paymentToken" id="field_paymentToken"
+                [(ngModel)]="principleSubscription.paymentToken" required />
+            <div [hidden]="!(editForm.controls.paymentToken?.dirty && editForm.controls.paymentToken?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.paymentToken?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.principleSubscription.startDate" for="field_startDate">Start Date</label>
+            <div class="input-group">
+                <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="principleSubscription.startDate"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.startDate?.dirty && editForm.controls.startDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.startDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.principleSubscription.endDate" for="field_endDate">End Date</label>
+            <div class="input-group">
+                <input id="field_endDate" type="text" class="form-control" name="endDate" ngbDatepicker  #endDateDp="ngbDatepicker" [(ngModel)]="principleSubscription.endDate"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.endDate?.dirty && editForm.controls.endDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.endDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.principleSubscription.paymentStatus" for="field_paymentStatus">Payment Status</label>
+            <select class="form-control" name="paymentStatus" [(ngModel)]="principleSubscription.paymentStatus" id="field_paymentStatus"  required>
+                <option value="DONE">{{'whisperApp.PAYMENT_STATUS.DONE' | translate}}</option>
+                <option value="NOTDONE">{{'whisperApp.PAYMENT_STATUS.NOTDONE' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.paymentStatus?.dirty && editForm.controls.paymentStatus?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.paymentStatus?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.principleSubscription.subscriptionDetails" for="field_subscriptionDetails">Subscription Details</label>
+            <select class="form-control" id="field_subscriptionDetails" name="subscriptionDetails" [(ngModel)]="principleSubscription.subscriptionDetails">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="subscriptionDetailsOption.id === principleSubscription.subscriptionDetails?.id ? principleSubscription.subscriptionDetails : subscriptionDetailsOption" *ngFor="let subscriptionDetailsOption of subscriptiondetails; trackBy: trackSubscriptionDetailsById">{{subscriptionDetailsOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,25 @@
+
+<div *ngIf="sampleOfAgentActivity">
+    <h2><span jhiTranslate="whisperApp.sampleOfAgentActivity.detail.title">Sample Of Agent Activity</span> {{sampleOfAgentActivity.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="whisperApp.sampleOfAgentActivity.activityName">Activity Name</span></dt>
+        <dd>
+            <span>{{sampleOfAgentActivity.activityName}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'sample-of-agent-activity/'+ sampleOfAgentActivity.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

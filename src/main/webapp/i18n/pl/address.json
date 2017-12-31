@@ -1,0 +1,25 @@
+{
+    "whisperApp": {
+        "address" : {
+            "home": {
+                "title": "Addresses",
+                "createLabel": "Dodaj Address",
+                "createOrEditLabel": "Dodaj lub edytuj: Address"
+            },
+            "created": "Utworzono nowy Address z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Address z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Address z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Address {{ id }}?"
+            },
+            "detail": {
+                "title": "Address"
+            },
+            "placeOrCity": "Place Or City",
+            "street": "Street",
+            "province": "Province",
+            "postalCode": "Postal Code",
+            "userData": "User Data"
+        }
+    }
+}

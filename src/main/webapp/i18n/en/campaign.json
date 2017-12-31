@@ -1,0 +1,31 @@
+{
+    "whisperApp": {
+        "campaign" : {
+            "home": {
+                "title": "Campaigns",
+                "createLabel": "Create a new Campaign",
+                "createOrEditLabel": "Create or edit a Campaign"
+            },
+            "created": "A new Campaign is created with identifier {{ param }}",
+            "updated": "A Campaign is updated with identifier {{ param }}",
+            "deleted": "A Campaign is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Campaign {{ id }}?"
+            },
+            "detail": {
+                "title": "Campaign"
+            },
+            "name": "Name",
+            "description": "Description",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "campaignActivity": "Campaign Activity",
+            "listOfPostsForActivity": "List Of Posts For Activity",
+            "executionStatus": "Execution Status",
+            "budget": "Budget",
+            "campaignStatus": "Campaign Status",
+            "parentCampaign": "Parent Campaign",
+            "principleSubscription": "Principle Subscription"
+        }
+    }
+}

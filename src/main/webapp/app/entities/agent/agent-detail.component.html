@@ -1,0 +1,41 @@
+
+<div *ngIf="agent">
+    <h2><span jhiTranslate="whisperApp.agent.detail.title">Agent</span> {{agent.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="whisperApp.agent.shortDescription">Short Description</span></dt>
+        <dd>
+            <span>{{agent.shortDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.agent.fullDescription">Full Description</span></dt>
+        <dd>
+            <span>{{agent.fullDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.agent.legalPersonality">Legal Personality</span></dt>
+        <dd>
+            <span jhiTranslate="{{'whisperApp.LEGAL_PERSONALITY.' + agent.legalPersonality}}">{{agent.legalPersonality}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.agent.agentStatus">Agent Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'whisperApp.AGENT_STATUS.' + agent.agentStatus}}">{{agent.agentStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.agent.preferredRate">Preferred Rate</span></dt>
+        <dd>
+            <span>{{agent.preferredRate}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'agent/'+ agent.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

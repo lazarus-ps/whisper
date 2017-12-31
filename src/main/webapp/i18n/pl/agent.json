@@ -1,0 +1,26 @@
+{
+    "whisperApp": {
+        "agent" : {
+            "home": {
+                "title": "Agents",
+                "createLabel": "Dodaj Agent",
+                "createOrEditLabel": "Dodaj lub edytuj: Agent"
+            },
+            "created": "Utworzono nowy Agent z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Agent z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Agent z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Agent {{ id }}?"
+            },
+            "detail": {
+                "title": "Agent"
+            },
+            "shortDescription": "Short Description",
+            "fullDescription": "Full Description",
+            "legalPersonality": "Legal Personality",
+            "agentStatus": "Agent Status",
+            "preferredRate": "Preferred Rate",
+            "campaignActivity": "Campaign Activity"
+        }
+    }
+}

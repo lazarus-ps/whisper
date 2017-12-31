@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity CampaignActivity.
+    -->
+    <changeSet id="20171219213307-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="agent_rate_id"
+                                 baseTableName="campaign_activity"
+                                 constraintName="fk_campaign_activity_agent_rate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agent_rate"/>
+
+        <addForeignKeyConstraint baseColumnNames="campaign_id"
+                                 baseTableName="campaign_activity"
+                                 constraintName="fk_campaign_activity_campaign_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="campaign"/>
+
+        <addForeignKeyConstraint baseColumnNames="campaign_activities_id"
+                                 baseTableName="campaign_activity_agent"
+                                 constraintName="fk_campaign_activity_agent_campaign_activities_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="campaign_activity"/>
+        <addForeignKeyConstraint baseColumnNames="agents_id"
+                                 baseTableName="campaign_activity_agent"
+                                 constraintName="fk_campaign_activity_agent_agents_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agent"/>
+        
+    </changeSet>
+</databaseChangeLog>

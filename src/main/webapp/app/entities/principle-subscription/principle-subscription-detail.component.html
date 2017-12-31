@@ -1,0 +1,43 @@
+
+<div *ngIf="principleSubscription">
+    <h2><span jhiTranslate="whisperApp.principleSubscription.detail.title">Principle Subscription</span> {{principleSubscription.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="whisperApp.principleSubscription.paymentToken">Payment Token</span></dt>
+        <dd>
+            <span>{{principleSubscription.paymentToken}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.principleSubscription.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{principleSubscription.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.principleSubscription.endDate">End Date</span></dt>
+        <dd>
+            <span>{{principleSubscription.endDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.principleSubscription.paymentStatus">Payment Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'whisperApp.PAYMENT_STATUS.' + principleSubscription.paymentStatus}}">{{principleSubscription.paymentStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.principleSubscription.subscriptionDetails">Subscription Details</span></dt>
+        <dd>
+            <div *ngIf="principleSubscription.subscriptionDetails">
+                <a [routerLink]="['/subscription-details', principleSubscription.subscriptionDetails?.id]">{{principleSubscription.subscriptionDetails?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'principle-subscription/'+ principleSubscription.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

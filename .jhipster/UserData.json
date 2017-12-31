@@ -1,0 +1,66 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "email",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userData"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "principle",
+            "otherEntityName": "principle",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userData"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "agent",
+            "otherEntityName": "agent",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userData"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "birthDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "GENDER",
+            "fieldValues": "MALE,FEMALE"
+        },
+        {
+            "fieldName": "pesel",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 11
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 12
+        }
+    ],
+    "changelogDate": "20171219213258",
+    "entityTableName": "user_data",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

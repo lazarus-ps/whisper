@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="whisperApp.agent.home.title">Agents</span>
+        <button class="btn btn-primary float-right jh-create-entity create-agent" [routerLink]="['/', { outlets: { popup: ['agent-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="whisperApp.agent.home.createLabel">
+            Create new Agent
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="agents">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shortDescription"><span jhiTranslate="whisperApp.agent.shortDescription">Short Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fullDescription"><span jhiTranslate="whisperApp.agent.fullDescription">Full Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="legalPersonality"><span jhiTranslate="whisperApp.agent.legalPersonality">Legal Personality</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="agentStatus"><span jhiTranslate="whisperApp.agent.agentStatus">Agent Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="preferredRate"><span jhiTranslate="whisperApp.agent.preferredRate">Preferred Rate</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let agent of agents ;trackBy: trackId">
+                <td><a [routerLink]="['../agent', agent.id ]">{{agent.id}}</a></td>
+                <td>{{agent.shortDescription}}</td>
+                <td>{{agent.fullDescription}}</td>
+                <td jhiTranslate="{{'whisperApp.LEGAL_PERSONALITY.' + agent.legalPersonality}}">{{agent.legalPersonality}}</td>
+                <td jhiTranslate="{{'whisperApp.AGENT_STATUS.' + agent.agentStatus}}">{{agent.agentStatus}}</td>
+                <td>{{agent.preferredRate}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../agent', agent.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'agent/'+ agent.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'agent/'+ agent.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="agents && agents.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [maxSize]="5" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

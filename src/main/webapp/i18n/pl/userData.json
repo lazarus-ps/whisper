@@ -1,0 +1,27 @@
+{
+    "whisperApp": {
+        "userData" : {
+            "home": {
+                "title": "User Data",
+                "createLabel": "Dodaj User Data",
+                "createOrEditLabel": "Dodaj lub edytuj: User Data"
+            },
+            "created": "Utworzono nowy User Data z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono User Data z identyfikatorem {{ param }}",
+            "deleted": "Usunięto User Data z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć User Data {{ id }}?"
+            },
+            "detail": {
+                "title": "User Data"
+            },
+            "birthDate": "Birth Date",
+            "gender": "Gender",
+            "pesel": "Pesel",
+            "phoneNumber": "Phone Number",
+            "user": "User",
+            "principle": "Principle",
+            "agent": "Agent"
+        }
+    }
+}

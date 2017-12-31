@@ -1,0 +1,24 @@
+{
+    "whisperApp": {
+        "principle" : {
+            "home": {
+                "title": "Principles",
+                "createLabel": "Create a new Principle",
+                "createOrEditLabel": "Create or edit a Principle"
+            },
+            "created": "A new Principle is created with identifier {{ param }}",
+            "updated": "A Principle is updated with identifier {{ param }}",
+            "deleted": "A Principle is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Principle {{ id }}?"
+            },
+            "detail": {
+                "title": "Principle"
+            },
+            "nip": "Nip",
+            "companyName": "Company Name",
+            "principleStatus": "Principle Status",
+            "principleSubscription": "Principle Subscription"
+        }
+    }
+}

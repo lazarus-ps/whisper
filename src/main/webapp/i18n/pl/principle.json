@@ -1,0 +1,24 @@
+{
+    "whisperApp": {
+        "principle" : {
+            "home": {
+                "title": "Principles",
+                "createLabel": "Dodaj Principle",
+                "createOrEditLabel": "Dodaj lub edytuj: Principle"
+            },
+            "created": "Utworzono nowy Principle z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Principle z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Principle z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Principle {{ id }}?"
+            },
+            "detail": {
+                "title": "Principle"
+            },
+            "nip": "Nip",
+            "companyName": "Company Name",
+            "principleStatus": "Principle Status",
+            "principleSubscription": "Principle Subscription"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+
+<div *ngIf="agentRate">
+    <h2><span jhiTranslate="whisperApp.agentRate.detail.title">Agent Rate</span> {{agentRate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="whisperApp.agentRate.rate">Rate</span></dt>
+        <dd>
+            <span>{{agentRate.rate}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.agentRate.comment">Comment</span></dt>
+        <dd>
+            <span>{{agentRate.comment}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.agentRate.agent">Agent</span></dt>
+        <dd>
+            <div *ngIf="agentRate.agent">
+                <a [routerLink]="['/agent', agentRate.agent?.id]">{{agentRate.agent?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'agent-rate/'+ agentRate.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

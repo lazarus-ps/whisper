@@ -1,0 +1,67 @@
+
+<div *ngIf="campaign">
+    <h2><span jhiTranslate="whisperApp.campaign.detail.title">Campaign</span> {{campaign.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="whisperApp.campaign.name">Name</span></dt>
+        <dd>
+            <span>{{campaign.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaign.description">Description</span></dt>
+        <dd>
+            <span>{{campaign.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaign.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{campaign.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaign.endDate">End Date</span></dt>
+        <dd>
+            <span>{{campaign.endDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaign.campaignActivity">Campaign Activity</span></dt>
+        <dd>
+            <span>{{campaign.campaignActivity}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaign.listOfPostsForActivity">List Of Posts For Activity</span></dt>
+        <dd>
+            <span>{{campaign.listOfPostsForActivity}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaign.executionStatus">Execution Status</span></dt>
+        <dd>
+            <span>{{campaign.executionStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaign.budget">Budget</span></dt>
+        <dd>
+            <span>{{campaign.budget}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaign.campaignStatus">Campaign Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'whisperApp.CAMPAING_STATUS.' + campaign.campaignStatus}}">{{campaign.campaignStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaign.parentCampaign">Parent Campaign</span></dt>
+        <dd>
+            <span>{{campaign.parentCampaign}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaign.principleSubscription">Principle Subscription</span></dt>
+        <dd>
+            <div *ngIf="campaign.principleSubscription">
+                <a [routerLink]="['/principle-subscription', campaign.principleSubscription?.id]">{{campaign.principleSubscription?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'campaign/'+ campaign.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

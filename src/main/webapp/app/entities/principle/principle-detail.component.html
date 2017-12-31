@@ -1,0 +1,39 @@
+
+<div *ngIf="principle">
+    <h2><span jhiTranslate="whisperApp.principle.detail.title">Principle</span> {{principle.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="whisperApp.principle.nip">Nip</span></dt>
+        <dd>
+            <span>{{principle.nip}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.principle.companyName">Company Name</span></dt>
+        <dd>
+            <span>{{principle.companyName}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.principle.principleStatus">Principle Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'whisperApp.PRINCIPLE_STATUS.' + principle.principleStatus}}">{{principle.principleStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.principle.principleSubscription">Principle Subscription</span></dt>
+        <dd>
+            <div *ngIf="principle.principleSubscription">
+                <a [routerLink]="['/principle-subscription', principle.principleSubscription?.id]">{{principle.principleSubscription?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'principle/'+ principle.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

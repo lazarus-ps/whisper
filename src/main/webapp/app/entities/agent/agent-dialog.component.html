@@ -1,0 +1,87 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAgentLabel" jhiTranslate="whisperApp.agent.home.createOrEditLabel">Create or edit a Agent</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!agent.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="agent.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.agent.shortDescription" for="field_shortDescription">Short Description</label>
+            <input type="text" class="form-control" name="shortDescription" id="field_shortDescription"
+                [(ngModel)]="agent.shortDescription" required maxlength="100" />
+            <div [hidden]="!(editForm.controls.shortDescription?.dirty && editForm.controls.shortDescription?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.shortDescription?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.shortDescription?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 100 }">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.agent.fullDescription" for="field_fullDescription">Full Description</label>
+            <input type="text" class="form-control" name="fullDescription" id="field_fullDescription"
+                [(ngModel)]="agent.fullDescription" required maxlength="1000" />
+            <div [hidden]="!(editForm.controls.fullDescription?.dirty && editForm.controls.fullDescription?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.fullDescription?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.fullDescription?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1000 }">
+                   This field cannot be longer than 1000 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.agent.legalPersonality" for="field_legalPersonality">Legal Personality</label>
+            <select class="form-control" name="legalPersonality" [(ngModel)]="agent.legalPersonality" id="field_legalPersonality" >
+                <option value="COMPANY">{{'whisperApp.LEGAL_PERSONALITY.COMPANY' | translate}}</option>
+                <option value="PERSON">{{'whisperApp.LEGAL_PERSONALITY.PERSON' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.agent.agentStatus" for="field_agentStatus">Agent Status</label>
+            <select class="form-control" name="agentStatus" [(ngModel)]="agent.agentStatus" id="field_agentStatus" >
+                <option value="ACTIVE">{{'whisperApp.AGENT_STATUS.ACTIVE' | translate}}</option>
+                <option value="INACTIVE">{{'whisperApp.AGENT_STATUS.INACTIVE' | translate}}</option>
+                <option value="SUSPENDED">{{'whisperApp.AGENT_STATUS.SUSPENDED' | translate}}</option>
+                <option value="DELETED">{{'whisperApp.AGENT_STATUS.DELETED' | translate}}</option>
+                <option value="VACATION">{{'whisperApp.AGENT_STATUS.VACATION' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.agent.preferredRate" for="field_preferredRate">Preferred Rate</label>
+            <input type="number" class="form-control" name="preferredRate" id="field_preferredRate"
+                [(ngModel)]="agent.preferredRate" required />
+            <div [hidden]="!(editForm.controls.preferredRate?.dirty && editForm.controls.preferredRate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.preferredRate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.preferredRate?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

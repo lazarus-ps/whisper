@@ -1,0 +1,75 @@
+
+<div *ngIf="campaignActivity">
+    <h2><span jhiTranslate="whisperApp.campaignActivity.detail.title">Campaign Activity</span> {{campaignActivity.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="whisperApp.campaignActivity.name">Name</span></dt>
+        <dd>
+            <span>{{campaignActivity.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.url">Url</span></dt>
+        <dd>
+            <span>{{campaignActivity.url}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{campaignActivity.creationDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.campaignActivity">Campaign Activity</span></dt>
+        <dd>
+            <span jhiTranslate="{{'whisperApp.CAMPAING_ACTIVITY_STATUS.' + campaignActivity.campaignActivity}}">{{campaignActivity.campaignActivity}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.text">Text</span></dt>
+        <dd>
+            <span>{{campaignActivity.text}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.linkToActivity">Link To Activity</span></dt>
+        <dd>
+            <span>{{campaignActivity.linkToActivity}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.nickINActivity">Nick IN Activity</span></dt>
+        <dd>
+            <span>{{campaignActivity.nickINActivity}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.numberOfLinksToCampaignPages">Number Of Links To Campaign Pages</span></dt>
+        <dd>
+            <span>{{campaignActivity.numberOfLinksToCampaignPages}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.activityType">Activity Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'whisperApp.ACTIVITY_TYPE.' + campaignActivity.activityType}}">{{campaignActivity.activityType}}</span>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.agentRate">Agent Rate</span></dt>
+        <dd>
+            <div *ngIf="campaignActivity.agentRate">
+                <a [routerLink]="['/agent-rate', campaignActivity.agentRate?.id]">{{campaignActivity.agentRate?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.campaign">Campaign</span></dt>
+        <dd>
+            <div *ngIf="campaignActivity.campaign">
+                <a [routerLink]="['/campaign', campaignActivity.campaign?.id]">{{campaignActivity.campaign?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="whisperApp.campaignActivity.agent">Agent</span></dt>
+        <dd>
+            <span *ngFor="let agent of campaignActivity.agents; let last = last">
+                <a [routerLink]="['/agent', agent?.id ]">{{agent.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'campaign-activity/'+ campaignActivity.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

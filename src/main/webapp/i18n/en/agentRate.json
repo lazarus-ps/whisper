@@ -1,0 +1,23 @@
+{
+    "whisperApp": {
+        "agentRate" : {
+            "home": {
+                "title": "Agent Rates",
+                "createLabel": "Create a new Agent Rate",
+                "createOrEditLabel": "Create or edit a Agent Rate"
+            },
+            "created": "A new Agent Rate is created with identifier {{ param }}",
+            "updated": "A Agent Rate is updated with identifier {{ param }}",
+            "deleted": "A Agent Rate is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Agent Rate {{ id }}?"
+            },
+            "detail": {
+                "title": "Agent Rate"
+            },
+            "rate": "Rate",
+            "comment": "Comment",
+            "agent": "Agent"
+        }
+    }
+}

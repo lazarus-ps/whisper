@@ -1,0 +1,25 @@
+{
+    "whisperApp": {
+        "principleSubscription" : {
+            "home": {
+                "title": "Principle Subscriptions",
+                "createLabel": "Dodaj Principle Subscription",
+                "createOrEditLabel": "Dodaj lub edytuj: Principle Subscription"
+            },
+            "created": "Utworzono nowy Principle Subscription z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Principle Subscription z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Principle Subscription z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Principle Subscription {{ id }}?"
+            },
+            "detail": {
+                "title": "Principle Subscription"
+            },
+            "paymentToken": "Payment Token",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "paymentStatus": "Payment Status",
+            "subscriptionDetails": "Subscription Details"
+        }
+    }
+}

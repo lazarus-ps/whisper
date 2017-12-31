@@ -1,0 +1,22 @@
+{
+    "whisperApp": {
+        "sampleOfCampaignActivity" : {
+            "home": {
+                "title": "Sample Of Campaign Activities",
+                "createLabel": "Dodaj Sample Of Campaign Activity",
+                "createOrEditLabel": "Dodaj lub edytuj: Sample Of Campaign Activity"
+            },
+            "created": "Utworzono nowy Sample Of Campaign Activity z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Sample Of Campaign Activity z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Sample Of Campaign Activity z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Sample Of Campaign Activity {{ id }}?"
+            },
+            "detail": {
+                "title": "Sample Of Campaign Activity"
+            },
+            "activityName": "Activity Name",
+            "listOfPosts": "List Of Posts"
+        }
+    }
+}

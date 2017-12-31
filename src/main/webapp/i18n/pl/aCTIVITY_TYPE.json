@@ -1,0 +1,11 @@
+{
+    "whisperApp": {
+        "ACTIVITY_TYPE" : {
+            "null": "",
+            "PR": "PR",
+            "NEUTRAL": "NEUTRAL",
+            "COMMENT": "COMMENT",
+            "ARTICLE": "ARTICLE"
+        }
+    }
+}

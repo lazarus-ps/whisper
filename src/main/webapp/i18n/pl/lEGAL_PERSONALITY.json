@@ -1,0 +1,9 @@
+{
+    "whisperApp": {
+        "LEGAL_PERSONALITY" : {
+            "null": "",
+            "COMPANY": "COMPANY",
+            "PERSON": "PERSON"
+        }
+    }
+}

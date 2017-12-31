@@ -1,0 +1,95 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myUserDataLabel" jhiTranslate="whisperApp.userData.home.createOrEditLabel">Create or edit a User Data</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!userData.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="userData.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.userData.birthDate" for="field_birthDate">Birth Date</label>
+            <div class="input-group">
+                <input id="field_birthDate" type="text" class="form-control" name="birthDate" ngbDatepicker  #birthDateDp="ngbDatepicker" [(ngModel)]="userData.birthDate"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="birthDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.birthDate?.dirty && editForm.controls.birthDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.birthDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.userData.gender" for="field_gender">Gender</label>
+            <select class="form-control" name="gender" [(ngModel)]="userData.gender" id="field_gender" >
+                <option value="MALE">{{'whisperApp.GENDER.MALE' | translate}}</option>
+                <option value="FEMALE">{{'whisperApp.GENDER.FEMALE' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.userData.pesel" for="field_pesel">Pesel</label>
+            <input type="text" class="form-control" name="pesel" id="field_pesel"
+                [(ngModel)]="userData.pesel" maxlength="11" />
+            <div [hidden]="!(editForm.controls.pesel?.dirty && editForm.controls.pesel?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.pesel?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 11 }">
+                   This field cannot be longer than 11 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.userData.phoneNumber" for="field_phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                [(ngModel)]="userData.phoneNumber" required maxlength="12" />
+            <div [hidden]="!(editForm.controls.phoneNumber?.dirty && editForm.controls.phoneNumber?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.phoneNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.phoneNumber?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 12 }">
+                   This field cannot be longer than 12 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.userData.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="userData.user" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === userData.user?.id ? userData.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.email}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.userData.principle" for="field_principle">Principle</label>
+            <select class="form-control" id="field_principle" name="principle" [(ngModel)]="userData.principle">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="principleOption.id === userData.principle?.id ? userData.principle : principleOption" *ngFor="let principleOption of principles; trackBy: trackPrincipleById">{{principleOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="whisperApp.userData.agent" for="field_agent">Agent</label>
+            <select class="form-control" id="field_agent" name="agent" [(ngModel)]="userData.agent">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="agentOption.id === userData.agent?.id ? userData.agent : agentOption" *ngFor="let agentOption of agents; trackBy: trackAgentById">{{agentOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

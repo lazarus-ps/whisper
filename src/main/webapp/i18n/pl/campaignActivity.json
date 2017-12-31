@@ -1,0 +1,32 @@
+{
+    "whisperApp": {
+        "campaignActivity" : {
+            "home": {
+                "title": "Campaign Activities",
+                "createLabel": "Dodaj Campaign Activity",
+                "createOrEditLabel": "Dodaj lub edytuj: Campaign Activity"
+            },
+            "created": "Utworzono nowy Campaign Activity z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Campaign Activity z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Campaign Activity z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Campaign Activity {{ id }}?"
+            },
+            "detail": {
+                "title": "Campaign Activity"
+            },
+            "name": "Name",
+            "url": "Url",
+            "creationDate": "Creation Date",
+            "campaignActivity": "Campaign Activity",
+            "text": "Text",
+            "linkToActivity": "Link To Activity",
+            "nickINActivity": "Nick IN Activity",
+            "numberOfLinksToCampaignPages": "Number Of Links To Campaign Pages",
+            "activityType": "Activity Type",
+            "agentRate": "Agent Rate",
+            "campaign": "Campaign",
+            "agent": "Agent"
+        }
+    }
+}

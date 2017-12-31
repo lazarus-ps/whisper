@@ -1,0 +1,9 @@
+{
+    "whisperApp": {
+        "PAYMENT_STATUS" : {
+            "null": "",
+            "DONE": "DONE",
+            "NOTDONE": "NOTDONE"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "principleSubscription",
+            "otherEntityName": "principleSubscription",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "principle"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nip",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "companyName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "principleStatus",
+            "fieldType": "PRINCIPLE_STATUS",
+            "fieldValues": "ACTIVE,INACTIVE,SUSPENDED,DELETED"
+        }
+    ],
+    "changelogDate": "20171219213259",
+    "entityTableName": "principle",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}
